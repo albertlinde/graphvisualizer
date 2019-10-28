@@ -25,6 +25,13 @@ parser.add_argument(
     required=False,
     default="pdf"
 )
+parser.add_argument(
+    '-g',
+    choices=['circ', 'fruc', 'rand'],
+    required=False,
+    default=None,
+    help="Choose only one graph type"
+)
 
 
 def str2bool(v):
@@ -50,6 +57,7 @@ args = parser.parse_args()
 fig_size = args.s
 fig_type = args.t
 file = args.f
+graph = args.g
 make_images = args.v
 
 
@@ -81,21 +89,24 @@ def print_text_and_images(file_name, nodes, connections_g):
         fig.savefig(filename, dpi=fig.dpi)
         pass
 
-    fig = start()
-    pos = nx.circular_layout(G)
-    end('{}-circular.{}'.format(file_name, fig_type))
+    if (not graph or graph == 'circ'):
+        fig = start()
+        pos = nx.circular_layout(G)
+        end('{}-circular.{}'.format(file_name, fig_type))
 
-    print("Drawn circular.")
+        print("Drawn circular.")
 
-    fig = start()
-    pos = nx.fruchterman_reingold_layout(G)
-    end('{}-frl.{}'.format(file_name, fig_type))
-    print("Drawn fruchterman reingold.")
+    if (not graph or graph == 'fruc'):
+        fig = start()
+        pos = nx.fruchterman_reingold_layout(G)
+        end('{}-frl.{}'.format(file_name, fig_type))
+        print("Drawn fruchterman reingold.")
 
-    fig = start()
-    pos = nx.random_layout(G)
-    end('{}-rand.{}'.format(file_name, fig_type))
-    print("Drawn random.")
+    if (not graph or graph == 'rand'):
+        fig = start()
+        pos = nx.random_layout(G)
+        end('{}-rand.{}'.format(file_name, fig_type))
+        print("Drawn random.")
 
 
 def print_file(file_name):
