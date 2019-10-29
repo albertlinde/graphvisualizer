@@ -29,6 +29,7 @@ optional arguments:
   -f F        file
   -t T        out file type (default="pdf")
   -v V        create images (default="true")
+  -g G        choose only one graph type ({circ,fruc,rand})
 
 ```
 
