@@ -20,7 +20,7 @@ python vis_static.py
 
 ```.
 % python vis_static.py -h
-usage: vis_static.py [-h] [-s S] [-f F] [-t T] [-v V]
+usage: vis_static.py [-h] [-s S] [-f F] [-t T] [-g {circ,fruc,rand}] [-v V]
 Visualizes networks static.
 
 optional arguments:
