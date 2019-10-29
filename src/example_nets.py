@@ -94,7 +94,8 @@ def rg(start, end):
 
 
 print('Making networks for {} nodes in ./nets.'.format(args.n))
-os.mkdir("nets")
+if not os.path.exists("nets"):
+    os.mkdir("nets")
 cliques(1, 1 + args.n)
 cliques_timed(1, 1 + args.n, 1, args.n * 101)
 circle(1, 1 + args.n)
