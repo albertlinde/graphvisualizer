@@ -1,6 +1,7 @@
 import argparse
 import random
 import os
+import math
 
 parser = argparse.ArgumentParser(description='Creates networks.')
 parser.add_argument(
@@ -73,6 +74,20 @@ def circle(start, end):
     f.close()
 
 
+def tree(start, end):
+    f = open("nets/tree.txt", "w")
+    links = set()
+    for i in range(start, math.ceil(end / 2)):
+        print(i, 2 * i, 2 * i + 1)
+        links.add('{},{}\n'.format(i, 2 * i))
+        links.add('{},{}\n'.format(i, 2 * i + 1))
+
+    sorted_links = list(links)
+    sorted_links.sort()
+    f.writelines(sorted_links)
+    f.close()
+
+
 def rg(start, end):
     f = open("nets/rg.txt", "w")
 
@@ -100,3 +115,4 @@ cliques(1, 1 + args.n)
 cliques_timed(1, 1 + args.n, 1, args.n * 101)
 circle(1, 1 + args.n)
 rg(1, 1 + args.n)
+tree(1, 1 + args.n)

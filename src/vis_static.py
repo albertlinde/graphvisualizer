@@ -143,6 +143,9 @@ if not file:
     if os.path.isfile("nets/rg.txt"):
         print_file("nets/rg.txt")
         done = True
+    if os.path.isfile("nets/tree.txt"):
+        print_file("nets/tree.txt")
+        done = True
     if not done:
         print("No example file exists. Run 'python "
               "example_nets.py'")
