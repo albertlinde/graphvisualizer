@@ -114,15 +114,15 @@ def print_file(file_name):
     connections = list()
 
     for line in open(file_name, "r").readlines():
-        try:
-            parsed = line[:-1]
-            parsed = parsed.split(",")
-            nodes.add(int(parsed[0]))
-            nodes.add(int(parsed[1]))
-            connections.append([int(parsed[0]), int(parsed[1])])
-
-        except:
-            print("Cant parse line: ", line)
+        if not line[0] == "#":
+            try:
+                parsed = line[:-1]
+                parsed = parsed.split(",")
+                nodes.add(int(parsed[0]))
+                nodes.add(int(parsed[1]))
+                connections.append([int(parsed[0]), int(parsed[1])])
+            except:
+                print("Cant parse line: ", line)
     nodes = list(nodes)
     nodes.sort()
 
