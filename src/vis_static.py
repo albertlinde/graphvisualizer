@@ -116,11 +116,14 @@ def print_file(file_name):
     for line in open(file_name, "r").readlines():
         if not line[0] == "#":
             try:
-                parsed = line[:-1]
-                parsed = parsed.split(",")
-                nodes.add(int(parsed[0]))
-                nodes.add(int(parsed[1]))
-                connections.append([int(parsed[0]), int(parsed[1])])
+                parsed = line.split(",")
+                node_1 = parsed[0].strip()
+                node_2 = parsed[1].strip()
+
+                nodes.add(node_1)
+                nodes.add(node_2)
+                connections.append([node_1, node_2])
+
             except:
                 print("Cant parse line: ", line)
     nodes = list(nodes)
